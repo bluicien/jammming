@@ -1,0 +1,41 @@
+section {
+    width: 50%;
+    max-height: 1000px;
+    background-color: rgba(15, 12, 68, 0.8);
+    color: aliceblue;
+    margin: 50px;
+    padding: 20px;
+    box-shadow: 3px 3px 3px 3px rgb(15, 12, 68);
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+h3 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+p {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.rowBorder {
+    border-bottom: 5px solid white;
+}
+

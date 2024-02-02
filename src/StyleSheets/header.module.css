@@ -1,0 +1,20 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navBar {
+    background-color: rgb(5, 9, 51);
+    font-size: 36px;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+h1 {
+    color: white;
+}
+
+span {
+    color: rgb(79, 53, 203);
+}
