@@ -1,7 +1,5 @@
 import React from 'react';
-import styles from '../StyleSheets/searchResults.module.css';
 import Track from './Track';
-import trackData from '../trackData.js'
 
 export default function SearchResults(props) {
 

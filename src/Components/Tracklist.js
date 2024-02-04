@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../StyleSheets/tracklist.module.css';
 import Track from './Track';
-import { createPlaylist } from '../Auth';
 
 // List of tracks to save to Spotify playlist
 // Adds tracks from SearchResults component
