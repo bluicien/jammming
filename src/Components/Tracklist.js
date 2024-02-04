@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../StyleSheets/tracklist.module.css';
 import Track from './Track';
-import {createPlaylist} from '../Auth';
+import { createPlaylist } from '../Auth';
 
 // List of tracks to save to Spotify playlist
 // Adds tracks from SearchResults component
@@ -21,7 +21,7 @@ export default function Tracklist(props) {
 
     return (
         <section>
-        {/* <button onClick={handleSubmit}>AUTH</button> */}
+        {/* <button onClick={handleAdd}>ADD</button> */}
             <form onSubmit={handleSubmit}>
                 <input className={styles.playListName} name='playlistName' type='text' value={playlistName} onChange={handleChange}/>
                     <table>

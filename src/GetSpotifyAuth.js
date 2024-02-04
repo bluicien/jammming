@@ -96,11 +96,3 @@ export async function createPlaylist(playlistName) {
     console.log(jsonResponse);
 }
 
-
-const uri = [
-    "2nLtzopw4rPReszdYBJU6h",
-    "0COqiPhxzoWICwFCS4eZcp",
-    "40rvBMQizxkIqnjPdEWY1v",
-    "40LQiUUUKXVGyNs09lHVjW",
-    "5GorCbAP4aL0EJ16frG2hd"
-]

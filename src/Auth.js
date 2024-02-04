@@ -1,6 +1,14 @@
 let accessToken = window.location.href.match(/access_token=([^&]*)/) ? window.location.href.match(/access_token=([^&]*)/)[1] : ''
 let userId;
+let playlistId;
 
+const uris = [
+  "2nLtzopw4rPReszdYBJU6h",
+  "0COqiPhxzoWICwFCS4eZcp",
+  "40rvBMQizxkIqnjPdEWY1v",
+  "40LQiUUUKXVGyNs09lHVjW",
+  "5GorCbAP4aL0EJ16frG2hd"
+]
 
 // CONNECT TO SPOIFY AND RETURN ACCESS TOKEN
 export async function Spotify() {
@@ -30,23 +38,53 @@ export async function Spotify() {
 
 
 // CREATE PLAYLIST
+// Accepts 1 parameter and connects to spotify's playlist api to create a new empty playlist.
 export async function createPlaylist(newPlaylist) {
+  // Call Spotify() to authorize and create 
   await Spotify();
-  userId = await fetchProfile();
-  const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+  try {
+    userId = await fetchProfile();
+    const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
       method: "POST",
       body: JSON.stringify({
-          name: `${newPlaylist}`,
-          description: "My description",
-          public: true
+        name: newPlaylist,
+        description: "My description",
+        public: true
       }),
       headers: {
-          "Content-type": "application/json",
-          "Authorization": `Bearer ${accessToken}`
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
       }
+    });
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      playlistId = jsonResponse.id;
+    }
+
+    addSongs();
+    
+  } catch(err) {
+    throw new Error("Failed to connect to spotify", { cause: err });
+  }
+}
+
+
+// POST SONGS TO PLAYLIST
+export async function addSongs() {
+  const songs = uris.map(songURI => `spotify:track:${songURI}`)
+  console.log(songs)
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    method: "POST",
+    body: JSON.stringify({
+      "uris": songs
+    }),
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${accessToken}`
+    }
   });
-  const jsonResponse = await response.json();
-  console.log(jsonResponse);
+
+  console.log(response)
 }
 
 
@@ -59,6 +97,7 @@ export async function fetchProfile(token) {
   result = await result.json();
   return result.id;
 }
+
 
 // CODE CHALLENGE
 function generateRandomString
@@ -73,3 +112,5 @@ function generateRandomString
   }
   return result;
 }
+
+
