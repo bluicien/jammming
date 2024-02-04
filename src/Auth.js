@@ -6,7 +6,7 @@ let playlistId;
 export async function Spotify() {
   
   let client_id = '9a9f13d783904ab0a929ab80963613bc';
-  let redirect_uri = 'http://localhost:3000/';
+  let redirect_uri = 'https://bluicien.github.io/jammming/';
   
   let state = generateRandomString(16);
   
