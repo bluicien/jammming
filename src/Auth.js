@@ -68,6 +68,27 @@ export async function createPlaylist(newPlaylist) {
   }
 }
 
+// SEARCH SONGS 
+export async function searchSongs(q) {
+  const response = await fetch(`https://api.spotify.com/v1/search?q=${q}&type=track%2Cartist&limit=20`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${accessToken}`
+    }
+  });
+
+  const songsArray = (await response.json()).tracks.items;
+  const searchResults = songsArray.map(song => (
+    {
+    id: song.uri,
+    songName: song.name,
+    artist: song.artists[0].name,
+    album: song.album.name
+    }))
+
+    return searchResults;
+}
 
 // POST SONGS TO PLAYLIST
 export async function addSongs() {
