@@ -5,7 +5,7 @@ export default function SearchBar(props) {
 
 
     return (
-        <form>
+        <form onSubmit={(e) => props.handleSearch(e)}>
             <input  id='search' 
                     className={styles.searchBar} 
                     placeholder='Search Music' 
@@ -13,7 +13,7 @@ export default function SearchBar(props) {
                     onChange={(e) => props.handleTextChange(e)}
                     />
             <br/>
-            <button className={styles.searchButton} onClick={props.handleSearch}>Search</button>
+            <button className={styles.searchButton}>Search</button>
         </form>
     );
 }

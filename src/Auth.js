@@ -2,15 +2,7 @@ let accessToken = window.location.href.match(/access_token=([^&]*)/) ? window.lo
 let userId;
 let playlistId;
 
-const uris = [
-  "2nLtzopw4rPReszdYBJU6h",
-  "0COqiPhxzoWICwFCS4eZcp",
-  "40rvBMQizxkIqnjPdEWY1v",
-  "40LQiUUUKXVGyNs09lHVjW",
-  "5GorCbAP4aL0EJ16frG2hd"
-]
-
-// CONNECT TO SPOIFY AND RETURN ACCESS TOKEN
+// CONNECT TO SPOTIFY AND RETURN ACCESS TOKEN
 export async function Spotify() {
   
   let client_id = '9a9f13d783904ab0a929ab80963613bc';
@@ -60,9 +52,6 @@ export async function createPlaylist(newPlaylist) {
       const jsonResponse = await response.json();
       playlistId = jsonResponse.id;
     }
-
-    addSongs();
-    
   } catch(err) {
     throw new Error("Failed to connect to spotify", { cause: err });
   }
@@ -91,21 +80,21 @@ export async function searchSongs(q) {
 }
 
 // POST SONGS TO PLAYLIST
-export async function addSongs() {
-  const songs = uris.map(songURI => `spotify:track:${songURI}`)
-  console.log(songs)
-  const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-    method: "POST",
-    body: JSON.stringify({
-      "uris": songs
-    }),
-    headers: {
-      "Content-type": "application/json",
-      "Authorization": `Bearer ${accessToken}`
-    }
-  });
+export async function addSongs(uris) {
+  if (uris.length !== 0) {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+      method: "POST",
+      body: JSON.stringify({
+        "uris": uris
+      }),
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+      }
+    });
+    console.log(response)
 
-  console.log(response)
+  }
 }
 
 

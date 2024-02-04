@@ -5,7 +5,6 @@ import trackData from '../trackData.js'
 
 export default function SearchResults(props) {
 
-
     return (
         <section>
             <table>

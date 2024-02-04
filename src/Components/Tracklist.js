@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
 import styles from '../StyleSheets/tracklist.module.css';
 import Track from './Track';
-import { createPlaylist, searchSongs } from '../Auth';
+import { createPlaylist } from '../Auth';
 
 // List of tracks to save to Spotify playlist
 // Adds tracks from SearchResults component
 
 export default function Tracklist(props) {
 
-    const [playlistName, setPlaylistName] = useState('')
+    // const [playlistName, setPlaylistName] = useState('')
 
-    function handleChange({target}) {
-        setPlaylistName(target.value)
-    }
+    // function handleChange({target}) {
+    //     setPlaylistName(target.value)
+    // }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        createPlaylist(playlistName);
-    }
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     const buildURIs = props.tracksToSave.map(song => song.id);
+    //     createPlaylist(playlistName, buildURIs);
+
+    // }
 
     return (
         <section>
-            <form onSubmit={handleSubmit}>
-                <input className={styles.playListName} name='playlistName' type='text' value={playlistName} onChange={handleChange}/>
+            <form onSubmit={(e) => props.handlePlaylistSubmit(e)}>
+                <input  
+                    className={styles.playListName} 
+                    name='playlistName' type='text' 
+                    value={props.playlistName} onChange={(e) => props.handlePlaylistName(e)}
+                />
                     <table>
                         <tbody style={{overflow: 'scroll'}}>
                             <hr/>
