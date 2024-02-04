@@ -1,0 +1,6 @@
+.symbol {
+    color: white;
+}
+.symbol:active {
+    color: gray;
+}
