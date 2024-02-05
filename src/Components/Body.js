@@ -73,6 +73,8 @@ export default function Body() {
 
         // Pass in the array of track URIs and playlist ID to the spotify api to add tracks to playlist
         addSongs(buildURIs, playlistId)
+        setPlaylist([])
+        setPlaylistName([])
     }
 
     // Connect user to their spotify account and create access token.

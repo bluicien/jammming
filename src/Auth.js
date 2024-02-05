@@ -14,7 +14,7 @@ if (isMobile) {
 export async function Spotify() {
   
   let client_id = '9a9f13d783904ab0a929ab80963613bc'; //Spotify dev account client ID
-  let redirect_uri = 'https://bluicien.github.io/jammming'; //URI to redirect to after receiving token
+  let redirect_uri = 'https://bluicien.github.io/jammming/'; //URI to redirect to after receiving token
   
   let state = generateRandomString(16);
   
