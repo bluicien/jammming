@@ -6,10 +6,9 @@ import styles from '../StyleSheets/searchResults.module.css'
 export default function SearchResults(props) {
 
     return (
-        <section>
-            <table>
-                <tr><thead><h3 className={styles.searchResults}>Search Results</h3></thead></tr>
-                <tbody>
+        <section className={styles.searchSection} >
+            <div className={styles.searchContainer}>
+                <h3 className={styles.searchResults}>Search Results</h3>
                 {props.searchData.map(song => (
                     <Track
                         key={song.songName+song.id}
@@ -21,8 +20,7 @@ export default function SearchResults(props) {
                         stateFlag={true}
                     />
                 ))}
-                </tbody>
-            </table>
+            </div>
         </section>
     );
 }

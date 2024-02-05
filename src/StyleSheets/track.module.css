@@ -1,6 +1,16 @@
+.trackContainer {
+    display: flex;
+    align-items: center;
+}
+
+.symbolDiv {
+    margin-left: auto;
+}
+
 /* Style + and - symbol for add/remove tracks */
 .symbol {
     color: white;
+    margin-left: auto;
 }
 
 /* Give symbol a different color when clicked to simulate blinking */
@@ -27,6 +37,7 @@ hr {
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Conditional styling for mobile devices */
 @media only screen and (max-width: 560px) {
     .songTitle {
         font-size: 1.2rem;

@@ -1,5 +1,5 @@
-/* Style section. Both search results and tracklist contain use section. Both are designed to be symmetric. */
-section {
+/* Style section. Both search results and tracklist contain use same styling to maintain symmetricity */
+.searchSection {
     width: 50%;
     max-height: 800px;
     background-color: rgba(15, 12, 68, 0.8);
@@ -10,7 +10,8 @@ section {
     overflow: auto;
 }
 
-table {
+/* Set width to fill full container */
+.searchContainer {
     width: 100%;
 }
 
@@ -32,10 +33,10 @@ hr {
 /* Conditional styling for mobile device */
 @media only screen and (max-width: 560px) {
 
-    section {
+    .searchSection {
         margin: 20px 10px 10px 10px;
         padding: 10px;
-        max-height: 500px;
+        max-height: 600px;
     }
 
     .searchResults {

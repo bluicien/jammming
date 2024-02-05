@@ -30,6 +30,8 @@ button:active {
 /* Conditional styling for mobile compatibility */
 @media only screen and (max-width: 560px) {
     .searchButton {
-        min-width: 200px;
+        margin-top: 20px;
+        height: 50px;
+        min-width: 180px;
     }
 }

@@ -17,13 +17,18 @@ export default function Track(props) {
 
     return (
         <>
-            <tr onClick={props.stateFlag ? () => props.handleAddTrack(trackObj) : () => props.handleRemoveTrack(trackObj)}>
-                <td>
+            <div
+                onClick={props.stateFlag ? () => props.handleAddTrack(trackObj) : () => props.handleRemoveTrack(trackObj)}
+                className={styles.trackContainer}
+            >
+                <div>
                     <h4 className={styles.songTitle}>{props.songName}</h4>
                     <p className={styles.songInfo}>{props.artist} | {props.album}</p>
-                </td>
-                {props.stateFlag ? <td><i className={styles.symbol}>✦</i></td> : <td><i className={styles.symbol}>—</i></td>}
-            </tr>
+                </div>
+                <div className={styles.symbolDiv}>
+                    {props.stateFlag ? <i className={styles.symbol}>✦</i> : <i className={styles.symbol}>—</i>}
+                </div>
+            </div>
             <hr/>
         </>
     )
