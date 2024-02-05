@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <nav className={styles.navBar}>
             <header>
-            <a className={styles.headTitle} href='/jamming' ><h1>Ja<span>mmm</span>ing</h1></a>
+            <a className={styles.headTitle} href='/jammming' ><h1>Ja<span>mmm</span>ing</h1></a>
             </header>
         </nav>
         );
