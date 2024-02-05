@@ -4,11 +4,17 @@
 let accessToken = window.location.href.match(/access_token=([^&]*)/) ? window.location.href.match(/access_token=([^&]*)/)[1] : ''
 let userId; // End user's user ID saved globally, fetched in create playlist logic
 
+// Check if user is on mobile device
+const isMobile = navigator.userAgentData.mobile;
+if (isMobile) {
+  accessToken = document.location.href.match(/access_token=([^&]*)/) ? window.location.href.match(/access_token=([^&]*)/)[1] : ''
+}
+
 // CONNECT TO SPOTIFY AND RETURN ACCESS TOKEN
 export async function Spotify() {
   
   let client_id = '9a9f13d783904ab0a929ab80963613bc'; //Spotify dev account client ID
-  let redirect_uri = 'http://localhost:3000/'; //URI to redirect to after receiving token
+  let redirect_uri = 'https://bluicien.github.io/jammming'; //URI to redirect to after receiving token
   
   let state = generateRandomString(16);
   

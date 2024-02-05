@@ -30,10 +30,12 @@ export default function Tracklist(props) {
                     ))}
                 </div>
                 <div className={styles.btn}>
-                    <button type='submit' className={styles.saveButton}>SAVE TO SPOTIFY</button>
-                    <button className={styles.connect} onClick={() => props.connectSpotify()}>
+                    <button type='submit' id='saveBtn' className={styles.saveButton}>SAVE TO SPOTIFY</button>
+                    <div className={styles.connectBtn} onClick={() => props.connectSpotify()}>
+                        {/* <button disabled  className={styles.connect}> */} 
                         <img className={styles.spotifyLogo} alt='Connect to spotify logo' />
-                    </button>
+                        {/* </button> */}
+                    </div>
                 </div>
             </form>
         </section>
