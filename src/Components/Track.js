@@ -2,9 +2,12 @@ import React from 'react';
 import styles from '../StyleSheets/track.module.css'
 
 
-// The component to maintain the display of a single track
+// DISPLAYS A SINGLE TRACK.
+// The component uses a flag passed down props to let the component know if the track is part of the search results,
+// or part of the playlist. Based on the flag, the component renders a + or - sign together with the functionality to add or remove.
 export default function Track(props) {
     
+    // The track information passed down props is saved to a track object to assist with the removal of track.
     const trackObj = {
         id: props.id,
         songName: props.songName,

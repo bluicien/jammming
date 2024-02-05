@@ -1,3 +1,4 @@
+/* Style section. Both search results and tracklist contain use section. Both are designed to be symmetric. */
 section {
     width: 50%;
     max-height: 800px;
@@ -13,13 +14,14 @@ table {
     width: 100%;
 }
 
+/* Style hr divider  */
 hr {
-    margin-top: 15px;
-    margin-bottom: 12px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
-
+/* Style the input box for the playlist name */
 .playListName {
     font-size: 36px;
     font-weight: 700;
@@ -31,10 +33,12 @@ hr {
     color: white;
 }
 
+/* Style the color of the playlist name placeholder */
 .playListName::placeholder {
     color: rgba(179, 170, 225, 0.5);
 }
 
+/* Style button to save playlist */
 .saveButton {
     margin-top: 80px;
     margin-right: 10px;
@@ -48,6 +52,12 @@ hr {
     border-radius: 40px;
 }
 
+/* Style save button to change color when clicked */
+.saveButton:active {
+    background-color: rgb(54, 36, 142);
+}
+
+/* Style the spotify button to connect to spotify */
 .connect {
     margin-top: 80px;
     margin-left: 10px;
@@ -60,29 +70,25 @@ hr {
     border-radius: 40px;
 }
 
+/* Change background color when spotify button clicked */
 .connect:active {
     background-color: white;
 }
 
+/* Add Spotify logo image to spotify button */
 .spotifyLogo {
     content:url(../../public/spotifyLogo.png);
     max-height: 2.5rem;
 }
 
-.saveButton:active {
-    background-color: rgb(54, 36, 142);
-}
-
+/* Display Save and Spotify button in a horizontal flex */
 .btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.rowBorder {
-    border-bottom: 5px solid white;
-}
-
+/* Conditional styling for mobile devices */
 @media only screen and (max-width: 560px) {
     section {
         margin: 10px;

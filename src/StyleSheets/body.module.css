@@ -1,3 +1,4 @@
+/* Display the components for search results and playlist in horizontal flex style. */
 .resultsBox {
     display: flex;
     flex-direction: row;

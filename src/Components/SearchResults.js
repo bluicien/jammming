@@ -2,6 +2,7 @@ import React from 'react';
 import Track from './Track';
 import styles from '../StyleSheets/searchResults.module.css'
 
+// DISPLAY RESULTS OF SEARCH.
 export default function SearchResults(props) {
 
     return (

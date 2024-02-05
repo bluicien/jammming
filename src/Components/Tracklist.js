@@ -1,23 +1,10 @@
 import React from 'react';
 import styles from '../StyleSheets/tracklist.module.css';
 import Track from './Track';
-// List of tracks to save to Spotify playlist
-// Adds tracks from SearchResults component
 
+
+// LIST OF TRACKS FOR USER TO SAVE TO THEIR SPOTIFY
 export default function Tracklist(props) {
-
-    // const [playlistName, setPlaylistName] = useState('')
-
-    // function handleChange({target}) {
-    //     setPlaylistName(target.value)
-    // }
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     const buildURIs = props.tracksToSave.map(song => song.id);
-    //     createPlaylist(playlistName, buildURIs);
-
-    // }
 
     return (
         <section>

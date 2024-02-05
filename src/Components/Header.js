@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "../StyleSheets/header.module.css";
 
+// DISPLAYS TOP NAV BAR WITH "Jammming" HEADING.
 export default function Header() {
     
     return (

@@ -1,8 +1,8 @@
 import React  from 'react';
 import styles from '../StyleSheets/searchBar.module.css';
 
+// SEARCH BAR TO SEARCH TRACKS & ARTISTS.
 export default function SearchBar(props) {
-
 
     return (
         <form onSubmit={(e) => props.handleSearch(e)}>

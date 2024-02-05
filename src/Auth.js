@@ -1,18 +1,19 @@
-// Spotify module for handling Spotify api functionality.
+// SPOTIFY MODULE TO HANDLE HTTP FUNCTIONALITY WITH SPOTIFY API
 
+// Save access token from url 
 let accessToken = window.location.href.match(/access_token=([^&]*)/) ? window.location.href.match(/access_token=([^&]*)/)[1] : ''
-let userId;
+let userId; // End user's user ID saved globally, fetched in create playlist logic
 
 // CONNECT TO SPOTIFY AND RETURN ACCESS TOKEN
 export async function Spotify() {
   
-  let client_id = '9a9f13d783904ab0a929ab80963613bc';
-  let redirect_uri = 'http://localhost:3000/';
+  let client_id = '9a9f13d783904ab0a929ab80963613bc'; //Spotify dev account client ID
+  let redirect_uri = 'http://localhost:3000/'; //URI to redirect to after receiving token
   
   let state = generateRandomString(16);
   
   localStorage.setItem("verifier", state);
-  let scope = 'user-read-private user-read-email playlist-modify-public';
+  let scope = 'user-read-private user-read-email playlist-modify-public'; // Permissions required from user.
   
   let url = 'https://accounts.spotify.com/authorize';
   url += '?response_type=token';
@@ -31,11 +32,11 @@ export async function Spotify() {
 
 
 // CREATE PLAYLIST
-// Accepts 1 parameter and connects to spotify's playlist api to create a new empty playlist.
+// Accepts 1 parameter and connects to spotify's api to create a new empty playlist.
 export async function createPlaylist(newPlaylist) {
   // Call Spotify() to authorize and create 
   try {
-    userId = await fetchProfile();
+    userId = await fetchProfile(); // Fetch user id and save to global variable.
     const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
       method: "POST",
       body: JSON.stringify({
@@ -49,8 +50,8 @@ export async function createPlaylist(newPlaylist) {
       }
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      const playlistId = jsonResponse.id;
+      const jsonResponse = await response.json(); // Parse json response.
+      const playlistId = jsonResponse.id; // Extract playlist ID and return.
       return playlistId;
     }
   } catch(err) {
@@ -59,6 +60,8 @@ export async function createPlaylist(newPlaylist) {
 }
 
 // POST SONGS TO PLAYLIST
+// This function takes 2 parameters. A list or track URIs to submit and build playlist.
+// And the ID of the playlist being created.
 export async function addSongs(uris, playlistId) {
   if (uris.length !== 0) {
     const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
@@ -72,11 +75,12 @@ export async function addSongs(uris, playlistId) {
       }
     });
     console.log(response)
-
   }
 }
 
-// SEARCH SONGS 
+// GET SONGS.
+// This function takes in a single string parameter which is injected into the URL,
+// to perform a GET request to search Spotify database for matching tracks.
 export async function searchSongs(q) {
   const response = await fetch(`https://api.spotify.com/v1/search?q=${q}&type=track%2Cartist&limit=20`, {
     method: "GET",
@@ -86,7 +90,11 @@ export async function searchSongs(q) {
     }
   });
 
-  const songsArray = (await response.json()).tracks.items;
+  // Parse response and extract the song array to songsArray variable
+  const songsArray = (await response.json()).tracks.items; 
+
+  // Using Array.map function, map through array of songs, 
+  // saving only track uri, song name, artist(s) and album to javascript object which is returned.
   const searchResults = songsArray.map(song => (
     {
     id: song.uri,

@@ -1,3 +1,4 @@
+/* Style the search bar */
 .searchBar {
     margin-top: 3%;
     font-size: 2rem;
@@ -9,6 +10,7 @@
 
 }
 
+/* Style the search button */
 .searchButton {
     margin-top: 2%;
     width: 10%;
@@ -20,10 +22,12 @@
     border: none;
 }
 
+/* Style change of color when the button is clicked */
 button:active {
     background-color: rgb(87, 58, 227);
 }
 
+/* Conditional styling for mobile compatibility */
 @media only screen and (max-width: 560px) {
     .searchButton {
         min-width: 200px;

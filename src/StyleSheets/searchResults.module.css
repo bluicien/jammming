@@ -1,3 +1,4 @@
+/* Style section. Both search results and tracklist contain use section. Both are designed to be symmetric. */
 section {
     width: 50%;
     max-height: 800px;
@@ -13,12 +14,14 @@ table {
     width: 100%;
 }
 
+/* Style hr to give margin and width */
 hr {
-    margin-top: 15px;
-    margin-bottom: 12px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
+/* Style the search results heading */
 .searchResults {
     font-size: 36px;
     font-weight: 700;
@@ -26,11 +29,7 @@ hr {
     margin-top: 10px;
 }
 
-
-.rowBorder {
-    border-bottom: 5px solid white;
-}
-
+/* Conditional styling for mobile device */
 @media only screen and (max-width: 560px) {
 
     section {

@@ -1,21 +1,27 @@
+/* Style + and - symbol for add/remove tracks */
 .symbol {
     color: white;
 }
+
+/* Give symbol a different color when clicked to simulate blinking */
 .symbol:active {
     color: gray;
 }
 
+/* Style song title */
 .songTitle {
     font-size: 2rem;
     font-weight: 600;
 }
 
+/* Style hr divider  */
 hr {
-    margin-top: 1.5rem;
-    margin-bottom: 12px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
+/* Style song info; artist and album */
 .songInfo {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.7);

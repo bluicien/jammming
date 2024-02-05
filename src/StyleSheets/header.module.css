@@ -1,9 +1,11 @@
+/* Remove all margins and paddings */
 * {
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Style header bar */
 .navBar {
     background-color: rgb(5, 9, 51);
     font-size: 36px;
@@ -11,19 +13,13 @@
     position: relative;
 }
 
-.headTitle h1 {
-    color: white;
-}
-
-
+/* Style the header */
 .headTitle {
     text-decoration: none;
-}
-
-.headTitle:active {
     color: white;
 }
 
+/* Style the 3 letters in the header in a different color. */
 span {
     color: rgb(79, 53, 203);
 }
