@@ -1,12 +1,13 @@
+// Spotify module for handling Spotify api functionality.
+
 let accessToken = window.location.href.match(/access_token=([^&]*)/) ? window.location.href.match(/access_token=([^&]*)/)[1] : ''
 let userId;
-let playlistId;
 
 // CONNECT TO SPOTIFY AND RETURN ACCESS TOKEN
 export async function Spotify() {
   
   let client_id = '9a9f13d783904ab0a929ab80963613bc';
-  let redirect_uri = 'https://bluicien.github.io/jammming/';
+  let redirect_uri = 'http://localhost:3000/';
   
   let state = generateRandomString(16);
   
@@ -33,7 +34,6 @@ export async function Spotify() {
 // Accepts 1 parameter and connects to spotify's playlist api to create a new empty playlist.
 export async function createPlaylist(newPlaylist) {
   // Call Spotify() to authorize and create 
-  await Spotify();
   try {
     userId = await fetchProfile();
     const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
@@ -50,10 +50,29 @@ export async function createPlaylist(newPlaylist) {
     });
     if (response.ok) {
       const jsonResponse = await response.json();
-      playlistId = jsonResponse.id;
+      const playlistId = jsonResponse.id;
+      return playlistId;
     }
   } catch(err) {
     throw new Error("Failed to connect to spotify", { cause: err });
+  }
+}
+
+// POST SONGS TO PLAYLIST
+export async function addSongs(uris, playlistId) {
+  if (uris.length !== 0) {
+    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+      method: "POST",
+      body: JSON.stringify({
+        "uris": uris
+      }),
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+      }
+    });
+    console.log(response)
+
   }
 }
 
@@ -79,23 +98,6 @@ export async function searchSongs(q) {
     return searchResults;
 }
 
-// POST SONGS TO PLAYLIST
-export async function addSongs(uris) {
-  if (uris.length !== 0) {
-    const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-      method: "POST",
-      body: JSON.stringify({
-        "uris": uris
-      }),
-      headers: {
-        "Content-type": "application/json",
-        "Authorization": `Bearer ${accessToken}`
-      }
-    });
-    console.log(response)
-
-  }
-}
 
 
 // FETCH PROFILE INFO AND RETURN USER ID

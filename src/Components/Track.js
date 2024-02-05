@@ -14,13 +14,12 @@ export default function Track(props) {
 
     return (
         <>
-            <tr>
-                <td >
-                    <h4>{props.songName}</h4>
-                    <p>{props.artist} | {props.album}</p>
+            <tr onClick={props.stateFlag ? () => props.handleAddTrack(trackObj) : () => props.handleRemoveTrack(trackObj)}>
+                <td>
+                    <h4 className={styles.songTitle}>{props.songName}</h4>
+                    <p className={styles.songInfo}>{props.artist} | {props.album}</p>
                 </td>
-                {props.stateFlag && <td><i className={styles.symbol} onClick={() => props.handleAddTrack(trackObj)}>✦</i></td>}
-                {!props.stateFlag && <td><i className={styles.symbol} onClick={() => props.handleRemoveTrack(trackObj)}>—</i></td>}
+                {props.stateFlag ? <td><i className={styles.symbol}>✦</i></td> : <td><i className={styles.symbol}>—</i></td>}
             </tr>
             <hr/>
         </>

@@ -1,12 +1,13 @@
 import React from 'react';
 import Track from './Track';
+import styles from '../StyleSheets/searchResults.module.css'
 
 export default function SearchResults(props) {
 
     return (
         <section>
             <table>
-                <tr><thead><h3>Search Results</h3></thead></tr>
+                <tr><thead><h3 className={styles.searchResults}>Search Results</h3></thead></tr>
                 <tbody>
                 {props.searchData.map(song => (
                     <Track

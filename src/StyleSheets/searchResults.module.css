@@ -1,6 +1,6 @@
 section {
     width: 50%;
-    max-height: 1000px;
+    max-height: 800px;
     background-color: rgba(15, 12, 68, 0.8);
     color: aliceblue;
     margin: 50px;
@@ -13,29 +13,33 @@ table {
     width: 100%;
 }
 
-h3 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-h4 {
-    font-size: 24px;
-    font-weight: 600;
-}
-
 hr {
     margin-top: 15px;
     margin-bottom: 12px;
     width: 100%;
 }
 
-p {
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
+.searchResults {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
+
 
 .rowBorder {
     border-bottom: 5px solid white;
 }
 
+@media only screen and (max-width: 560px) {
+
+    section {
+        margin: 20px 10px 10px 10px;
+        padding: 10px;
+        max-height: 500px;
+    }
+
+    .searchResults {
+        font-size: 1.5rem;
+    }
+}

@@ -3,7 +3,7 @@ import styles from '../StyleSheets/body.module.css';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import Tracklist from './Tracklist';
-import { searchSongs, createPlaylist, addSongs } from '../Auth';
+import { searchSongs, createPlaylist, addSongs, Spotify } from '../Auth';
 
 export default function Body() {
 
@@ -28,6 +28,10 @@ export default function Body() {
     // Connect to search API and set search results state to new array of songs.
     function handleSearch(e) {
         e.preventDefault();
+        if (searchQuery === '') {
+            setSearchResults([])
+            return;
+        }
         searchSongs(searchQuery).then(songs => setSearchResults(songs));
     }
 
@@ -49,15 +53,17 @@ export default function Body() {
 
 
     // Handle submission of playlist
-    function handlePlaylistSubmit(e) {
+    async function handlePlaylistSubmit(e) {
         e.preventDefault();
-        createPlaylist(playlistName);
+        const playlistId = await createPlaylist(playlistName);
         const buildURIs = playlist.map(song => song.id);
         if (buildURIs.length !== 0) {
-            addSongs(buildURIs)
+            addSongs(buildURIs, playlistId)
         }
-        
+    }
 
+    function handleConnectSpotify() {
+        Spotify();
     }
 
     return (
@@ -77,6 +83,7 @@ export default function Body() {
                     handleRemoveTrack={handleRemoveTrack}
                     handlePlaylistName={handlePlaylistName}
                     handlePlaylistSubmit={handlePlaylistSubmit}
+                    connectSpotify={handleConnectSpotify}
                     playlistName={playlistName}
                     />
             </div>
